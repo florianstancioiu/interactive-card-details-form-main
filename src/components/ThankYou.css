@@ -1,0 +1,18 @@
+.thank-you {
+  padding: 90px 24px 0;
+  text-align: center;
+}
+
+.thank-you .icon-complete {
+  margin: 0 auto 40px;
+}
+
+.thank-you h1 {
+  margin-bottom: 27px;
+  text-transform: uppercase;
+}
+
+.thank-you p {
+  color: var(--dark-grayish-violet);
+  margin-bottom: 50px;
+}

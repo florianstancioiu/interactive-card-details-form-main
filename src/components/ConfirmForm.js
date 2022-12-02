@@ -1,3 +1,5 @@
+import MainButton from './MainButton';
+
 import './ConfirmForm.css';
 
 const ConfirmForm = () => {
@@ -24,9 +26,7 @@ const ConfirmForm = () => {
           <input type='text' placeholder='e.g. 123' />
         </label>
       </div>
-      <button type='submit' className='btn'>
-        Confirm
-      </button>
+      <MainButton title='Confirm' />
     </form>
   );
 };

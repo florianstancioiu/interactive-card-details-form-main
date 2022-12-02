@@ -24,7 +24,9 @@ function App() {
         year={data.year}
         cvc={data.cvc}
       />
+      {/*
       <ConfirmForm />
+      */}
       <ThankYou />
     </>
   );

@@ -1,0 +1,9 @@
+.btn {
+  background-color: var(--very-dark-violet);
+  color: var(--white);
+  height: 54px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 45px;
+}
