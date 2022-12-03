@@ -16,7 +16,7 @@ function App() {
   });
 
   return (
-    <>
+    <main className='main-app'>
       <CardsBg
         number={data.number}
         name={data.name}
@@ -24,11 +24,13 @@ function App() {
         year={data.year}
         cvc={data.cvc}
       />
-      {/*
-      <ConfirmForm />
+      <div className='steps'>
+        {/*
+        <ConfirmForm />
       */}
-      <ThankYou />
-    </>
+        <ThankYou />
+      </div>
+    </main>
   );
 }
 

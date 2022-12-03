@@ -16,3 +16,13 @@
   color: var(--dark-grayish-violet);
   margin-bottom: 50px;
 }
+
+.thank-you .btn {
+  margin-bottom: 82px;
+}
+
+@media screen and (min-width: 1440px) {
+  .thank-you .btn {
+    margin-bottom: 0;
+  }
+}

@@ -36,3 +36,17 @@
   display: flex;
   gap: 10px;
 }
+
+.confirm-form .btn {
+  margin-bottom: 45px;
+}
+
+@media screen and (min-width: 1440px) {
+  .confirm-form {
+    padding: 0;
+  }
+
+  .confirm-form .btn {
+    margin-bottom: 0;
+  }
+}
