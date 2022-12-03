@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import MainButton from './MainButton';
+import InputError from './InputError';
 
 import './ConfirmForm.css';
 
@@ -14,10 +17,11 @@ const ConfirmForm = ({
   month,
   year,
   cvc,
+  errors,
 }) => {
   return (
     <form className='confirm-form' onSubmit={onFormSubmit}>
-      <label>
+      <label className={errors.name.error ? 'error' : ''}>
         <span>Cardholder Name</span>
         <input
           type='text'
@@ -25,8 +29,9 @@ const ConfirmForm = ({
           onChange={onNameChange}
           placeholder='e.g. Jane Appleseed'
         />
+        <InputError error={errors.name} />
       </label>
-      <label>
+      <label className={errors.number.error ? 'error' : ''}>
         <span>Card Number</span>
         <input
           type='text'
@@ -34,6 +39,7 @@ const ConfirmForm = ({
           onChange={onNumberChange}
           placeholder='e.g. 1234 5678 9123 0000'
         />
+        <InputError error={errors.number} />
       </label>
       <div className='date-and-cvc'>
         <label className='date'>
@@ -44,16 +50,20 @@ const ConfirmForm = ({
               value={month}
               onChange={onMonthChange}
               placeholder='MM'
+              className={errors.month.error ? 'error' : ''}
             />
             <input
               type='text'
               value={year}
               onChange={onYearChange}
               placeholder='YY'
+              className={errors.year.error ? 'error' : ''}
             />
           </div>
+          <InputError error={errors.month} />
+          <InputError error={errors.year} />
         </label>
-        <label>
+        <label className={errors.cvc.error ? 'error' : ''}>
           <span>CVC</span>
           <input
             type='text'
@@ -61,6 +71,7 @@ const ConfirmForm = ({
             onChange={onCvcChange}
             placeholder='e.g. 123'
           />
+          <InputError error={errors.cvc} />
         </label>
       </div>
       <MainButton title='Confirm' />

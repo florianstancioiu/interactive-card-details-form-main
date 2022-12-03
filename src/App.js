@@ -14,6 +14,28 @@ function App() {
     year: '00',
     cvc: '123',
   });
+  const [errors, setErrors] = useState({
+    number: {
+      error: false,
+      message: '',
+    },
+    name: {
+      error: false,
+      message: '',
+    },
+    month: {
+      error: false,
+      message: '',
+    },
+    year: {
+      error: false,
+      message: '',
+    },
+    cvc: {
+      error: false,
+      message: '',
+    },
+  });
   const [showForm, setShowForm] = useState(true);
 
   const onNameChangeHandler = (event) => {
@@ -84,36 +106,216 @@ function App() {
   };
 
   const validateName = () => {
+    if (data.name.trim().length === 0) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          name: {
+            error: true,
+            message: "Can't be blank",
+          },
+        };
+      });
+
+      return false;
+    }
+
     const regex = new RegExp('^[a-zA-Z ]*$');
     const result = regex.test(data.name);
+
+    if (!result) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          name: {
+            error: true,
+            message: 'Wrong format, alphacharacters and spaces only',
+          },
+        };
+      });
+    } else {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          name: {
+            error: false,
+            message: '',
+          },
+        };
+      });
+    }
 
     return result;
   };
 
   const validateNumber = () => {
+    if (data.number.trim().length === 0) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          number: {
+            error: true,
+            message: "Can't be blank",
+          },
+        };
+      });
+
+      return false;
+    }
+
     const regex = new RegExp('^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$');
     const result = regex.test(data.number);
+
+    if (!result) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          number: {
+            error: true,
+            message: 'Wrong format, numbers only',
+          },
+        };
+      });
+    } else {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          number: {
+            error: false,
+            message: '',
+          },
+        };
+      });
+    }
 
     return result;
   };
 
   const validateMonth = () => {
+    if (data.month.trim().length === 0) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          month: {
+            error: true,
+            message: "Can't be blank",
+          },
+        };
+      });
+
+      return false;
+    }
+
     const regex = new RegExp('^[0-9]{2}$');
     const result = regex.test(data.month);
+
+    if (!result) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          month: {
+            error: true,
+            message: 'Wrong format, two digits only',
+          },
+        };
+      });
+    } else {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          month: {
+            error: false,
+            message: '',
+          },
+        };
+      });
+    }
 
     return result;
   };
 
   const validateYear = () => {
+    if (data.year.trim().length === 0) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          year: {
+            error: true,
+            message: "Can't be blank",
+          },
+        };
+      });
+
+      return false;
+    }
+
     const regex = new RegExp('^[0-9]{2}$');
     const result = regex.test(data.year);
+
+    if (!result) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          year: {
+            error: true,
+            message: 'Wrong format, two digits only',
+          },
+        };
+      });
+    } else {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          year: {
+            error: false,
+            message: '',
+          },
+        };
+      });
+    }
 
     return result;
   };
 
   const validateCvc = () => {
+    if (data.cvc.trim().length === 0) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          cvc: {
+            error: true,
+            message: "Can't be blank",
+          },
+        };
+      });
+
+      return false;
+    }
+
     const regex = new RegExp('^[0-9]{3}$');
     const result = regex.test(data.cvc);
+
+    if (!result) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          cvc: {
+            error: true,
+            message: 'Wrong format, three digits only',
+          },
+        };
+      });
+    } else {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          cvc: {
+            error: false,
+            message: '',
+          },
+        };
+      });
+    }
 
     return result;
   };
@@ -141,6 +343,7 @@ function App() {
             month={data.month}
             year={data.year}
             cvc={data.cvc}
+            errors={errors}
           />
         )}
         {!showForm && (
