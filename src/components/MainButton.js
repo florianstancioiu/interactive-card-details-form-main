@@ -1,8 +1,8 @@
 import './MainButton.css';
 
-const MainButton = ({ title }) => {
+const MainButton = ({ title, onClickCustom }) => {
   return (
-    <button type='submit' className='btn'>
+    <button onClick={onClickCustom} type='submit' className='btn'>
       {title}
     </button>
   );
